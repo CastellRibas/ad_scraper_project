@@ -38,12 +38,13 @@ def get_ads_data(customer_id):
         print(f"Error: {ex}")
         return []
 
-# Rutas Flask
+# Ruta principal para mostrar el dashboard
 @app.route("/")
 def home():
     customer_id = "INSERT_CUSTOMER_ID_HERE"  # Cambia esto por un ID real
     campaigns = get_ads_data(customer_id)
     return render_template("dashboard.html", campaigns=campaigns)
 
+# Ejecutar la app solo si este es el archivo principal
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8000)  # Cambié el puerto a 8000
